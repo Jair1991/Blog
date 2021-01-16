@@ -2,3 +2,10 @@
 
 {% block title %}Registry{% endblock %}  <!--2-->
 
+{% block content %} <!--4-->
+    <form method="POST", action="" class="mt-2" autocomplete="off"> <!--4-->
+        {% csrf_token %} <!--4-->
+        {{ form }} <!--4-->
+        <button type="submit" class="btn btn-success">Create account</button> <!--4-->
+    </form> <!--4-->
+{% endblock %} <!--4-->
