@@ -3,6 +3,8 @@
         <head> <!--2-->
             <meta charset="UTF-8"> <!--2-->
             <title>{% block title %}{% endblock %} - WebDevelopmentCourse</title> <!--2-->
+            {% load static %} <!--3-->
+            <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/> <!--3-->
         </head> <!--2-->
         <body> <!--2-->
             <nav class="navbar navbar-expand-lg navbar-light bg-light"> <!--2-->
@@ -14,5 +16,8 @@
             <div class="container mt-3"> <!--2-->
                 {% block content %}{% endblock %} <!--2-->
             </div> <!--2-->
+            <script src="{% static 'js/jquery-slim.min.js' %}"></script> <!--3-->
+            <script src="{% static 'js/popper.min.js' %}"></script> <!--3-->
+            <script src="{% static 'js/bootstrap.min.js' %}"></script> <!--3-->
         </body> <!--2-->
 </html> <!--2-->

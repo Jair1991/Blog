@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+
+# #<!--3 allows access to directories-->
+import os
 # #<!--1.1-->
 from .db import MYSQL
 from pathlib import Path
@@ -118,3 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+# #<!--3 directory for static files-->
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "statics")
+]
