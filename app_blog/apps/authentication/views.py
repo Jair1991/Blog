@@ -5,8 +5,11 @@
 # def registry(request):
 #   #<!--2-->
 #   return render(request, "registry.html")
+
 from django.shortcuts import render
+# #<!--4-->
 from django.views.generic import View
+# #<!--4-->
 from django.contrib.auth.forms import UserCreationForm
 
 

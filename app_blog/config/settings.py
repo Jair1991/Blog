@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # #my packages # #<!--5-->
+    # #<!--5 interact with forms that make use of bootstrap-->
+    'crispy_forms',
+
     # #My apps # #<!--1-->
     'apps.blog',
     'apps.authentication',
@@ -125,3 +129,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "statics")
 ]
+
+# <!--5 use bootstrap4 for forms-->
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
