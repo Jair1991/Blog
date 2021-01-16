@@ -1,3 +1,8 @@
+# #<!--2-->
 from django.shortcuts import render
 
-# Create your views here.
+
+# #<!--2-->
+def registry(request):
+    # #<!--2-->
+    return render(request, "registry.html")

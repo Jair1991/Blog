@@ -1,0 +1,18 @@
+<!DOCTYPE html> <!--2-->
+    <html lang="es"> <!--2-->
+        <head> <!--2-->
+            <meta charset="UTF-8"> <!--2-->
+            <title>{% block title %}{% endblock %} - WebDevelopmentCourse</title> <!--2-->
+        </head> <!--2-->
+        <body> <!--2-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light"> <!--2-->
+                <a class="navbar-brand" href="/">Blog with Python and Django</a> <!--2-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <!--2-->
+                    <span class="navbar-toggler-icon"></span> <!--2-->
+                </button> <!--2-->
+            </nav> <!--2-->
+            <div class="container mt-3"> <!--2-->
+                {% block content %}{% endblock %} <!--2-->
+            </div> <!--2-->
+        </body> <!--2-->
+</html> <!--2-->
