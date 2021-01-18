@@ -1,3 +1,8 @@
+# #<!--14-->
 from django.contrib import admin
+# #<!--14-->
+from apps.blog.models import Category, Post
 
-# Register your models here.
+# #<!--14-->
+admin.site.register([Category, Post])
+
