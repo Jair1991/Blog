@@ -7,14 +7,50 @@
 #   return render(request, "registry.html")
 # #<!--5-->
 from django.contrib import messages
-# #<!--5--> # #<!--8-->
-from django.contrib.auth import login, logout
+# #<!--5--> # #<!--8--> # #<!--9-->
+from django.contrib.auth import login, logout, authenticate
 # #<!--5-->
 from django.shortcuts import render, redirect
 # #<!--4-->
 from django.views.generic import View
-# #<!--4-->
-from django.contrib.auth.forms import UserCreationForm
+# #<!--4--> # #<!--9-->
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+
+
+# #<!--9 authenticate user-->
+def accessing(request):
+    # #<!--9-->
+    if request.method == "POST":
+        # #<!--9-->
+        form = AuthenticationForm(request, data=request.POST)
+        # #<!--9-->
+        if form.is_valid():
+            # #<!--9-->
+            username = form.cleaned_data.get("username")
+            # #<!--9-->
+            password = form.cleaned_data.get("password")
+            # #<!--9-->
+            user = authenticate(username=username, password=password)
+            # #<!--9-->
+            if user is not None:
+                # #<!--9-->
+                login(request, user)
+                # #<!--9-->
+                messages.success(request, F"Welcome again {username}")
+                # #<!--9-->
+                return redirect("blog")
+            # #<!--9-->
+            else:
+                # #<!--9-->
+                messages.error(request, "The data is wrong")
+        # #<!--9-->
+        else:
+            # #<!--9-->
+            messages.error(request, "The data is wrong")
+    # #<!--9-->
+    form = AuthenticationForm()
+    # #<!--9-->
+    return render(request, "accessing.html", {"form": form})
 
 
 # #<!--4 view-based class-->
@@ -62,5 +98,5 @@ def closed(request):
     logout(request)
     # #<!--8-->
     messages.success(request, F"Your session has been successfully closed")
-    # #<!--8-->
+    # #<!--8 return redirect("blog")--> # #<!--9-->
     return redirect("accessing")

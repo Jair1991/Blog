@@ -29,6 +29,12 @@
                                 <a class="nav-link" href="{% url 'closed' %}">Bye {{ user.username }}</a> <!--8-->
                             </li> <!--8-->
                         {% else %} <!--7-->
+                            <li class="nav-item"> <!--9-->
+                                <a class="nav-link" href="{% url 'accessing' %}">To access</a> <!--9-->
+                            </li> <!--9-->
+                            <li class="nav-item"> <!--9-->
+                                <a class="nav-link" href="{% url 'registry' %}">registry</a> <!--9-->
+                            </li> <!--9-->
 
                         {% endif %} <!--7-->
                     </ul>

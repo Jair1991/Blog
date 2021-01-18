@@ -1,0 +1,13 @@
+{% extends 'base.html' %} <!--9-->
+
+{% block title %}Accessing{% endblock %}  <!--9-->
+
+{% load crispy_forms_tags %} <!--9-->
+
+{% block content %} <!--9-->
+    <form method="POST" action="" class="mt-2" autocomplete="off"> <!--9-->
+        {% csrf_token %} <!--9-->
+        {{ form|crispy }} <!--9-->
+        <button type="submit" class="btn btn-success">Log in</button> <!--9-->
+    </form> <!--9-->
+{% endblock %} <!--9-->
