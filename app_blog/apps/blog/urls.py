@@ -7,10 +7,11 @@ from django.urls import path
 # urlpatterns = [
 # path('greeting/', index, name="greeting"),
 # ]
-# #<!--5-->
-from apps.blog.views import index
+# #<!--5--> # #<!--12-->
+from apps.blog.views import index, create_post
 
-# #<!--5-->
+# #<!--5--> # #<!--12-->
 urlpatterns = [
     path('', index, name="blog"),
+    path('post/create', create_post, name="create_post"),
 ]
