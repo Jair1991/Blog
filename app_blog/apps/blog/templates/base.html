@@ -44,17 +44,17 @@
             </nav> <!--2-->
 
             <div class="container mt-3"> <!--2-->
-                {% if messages %} # <!--6-->
-                    <div class="row mt-3 mb-3"> # <!--6-->
-                        <div class="col-12"># <!--6-->
-                            {% for message in messages %} # <!--6-->
-                                <div class="alert alert-{{ message.tags }}"> # <!--6-->
-                                    {{ message }} # <!--6-->
-                                </div> # <!--6-->
-                            {% endfor %} # <!--6-->
-                        </div> # <!--6-->
-                    </div> # <!--6-->
-                {% endif %} # <!--6-->
+                {% if messages %} <!--6-->
+                    <div class="row mt-3 mb-3"> <!--6-->
+                        <div class="col-12"> <!--6-->
+                            {% for message in messages %} <!--6-->
+                                <div class="alert alert-{{ message.tags }}"> <!--6-->
+                                    {{ message }} <!--6-->
+                                </div> <!--6-->
+                            {% endfor %} <!--6-->
+                        </div> <!--6-->
+                    </div> <!--6-->
+                {% endif %} <!--6-->
                 {% block content %}{% endblock %} <!--2-->
             </div> <!--2-->
             <script src="{% static 'js/jquery-slim.min.js' %}"></script> <!--3-->
