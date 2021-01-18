@@ -12,7 +12,29 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <!--2-->
                     <span class="navbar-toggler-icon"></span> <!--2-->
                 </button> <!--2-->
+
+                <div class="collapse navbar-collapse" id="navbarNav"> <!--7-->
+                    <ul class="navbar-nav"> <!--7-->
+                        <li class="nav-item"> <!--7-->
+                            <a class="nav-link" href="{% url 'blog' %}">Blog</a> <!--7-->
+                        </li> <!--7-->
+                    </ul> <!--7-->
+
+                    <ul class="navbar-nav ml-auto"> <!--7-->
+                        {% if user.is_authenticated %} <!--7-->
+                            <li class="nav-item"> <!--7-->
+                                <a class="nav-link" href="#">Hi {{ user.username }}</a> <!--7-->
+                            </li> <!--7-->
+
+                        {% else %} <!--7-->
+
+                        {% endif %} <!--7-->
+                    </ul>
+
+                </div> <!--7-->
+
             </nav> <!--2-->
+
             <div class="container mt-3"> <!--2-->
                 {% if messages %} # <!--6-->
                     <div class="row mt-3 mb-3"> # <!--6-->
