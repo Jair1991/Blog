@@ -7,8 +7,8 @@
 #   return render(request, "registry.html")
 # #<!--5-->
 from django.contrib import messages
-# #<!--5-->
-from django.contrib.auth import login
+# #<!--5--> # #<!--8-->
+from django.contrib.auth import login, logout
 # #<!--5-->
 from django.shortcuts import render, redirect
 # #<!--4-->
@@ -54,3 +54,13 @@ class RecordView(View):
                 messages.error(request, form.error_messages[msg])
             # #<!--5-->
             return render(request, "registry.html", {"form": form})
+
+
+# #<!--8-->
+def closed(request):
+    # #<!--8-->
+    logout(request)
+    # #<!--8-->
+    messages.success(request, F"Your session has been successfully closed")
+    # #<!--8-->
+    return redirect("accessing")
