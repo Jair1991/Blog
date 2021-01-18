@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 # #<!--1-->
 from django.urls import path, include
+# #<!--15-->
+from django.conf import settings
+# #<!--15-->
+from django.conf.urls.static import static
 
 # #<!--1--> edition de path('blog/', include("apps.blog.urls")), # #<!--5-->
 # #<!--2-->
@@ -23,4 +27,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("apps.blog.urls")),
     path('accounts/', include("apps.authentication.urls")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# url de las image # #<!--15-->
