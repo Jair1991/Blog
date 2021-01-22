@@ -13,6 +13,8 @@ from django.shortcuts import render, redirect
 from apps.blog.forms import PostForms
 # #<!--12-->
 from django.contrib import messages
+# #<!--16-->
+from apps.blog.models import Post
 
 
 # #<!--5-->
@@ -20,7 +22,11 @@ def index(request):
     # #<!--5-->
     # return HttpResponse("Hi world")
     # #<!--6-->
-    return render(request, "blog.html")
+    # return render(request, "blog.html")
+    # #<!--16-->
+    posts = Post.objects.all()
+    # #<!--16-->
+    return render(request, "blog.html", {"posts": posts})
 
 
 # all config # #<!--12-->

@@ -3,5 +3,35 @@
 {% block title %}Blog{% endblock %}  <!--6-->
 
 {% block content %} <!--6-->
+    <div class="mt-3"> <!--16-->
+        <div class="row mb-3"> <!--16-->
+            <div class="col-3 offset-9"> <!--16-->
+                <a class="btn btn-primary float-right" href="{% url 'create_post' %}"> <!--16-->
+                    Create new post <!--16-->
+                </a> <!--16-->
+            </div> <!--16-->
+        </div> <!--16-->
+        {% if posts %} <!--16-->
+            {% for post in posts %} <!--16-->
+                {% if forloop.first %}<div class="row">{% endif %} <!--16-->
+                <div class="col-4"> <!--16-->
+                    <div class="card"> <!--16-->
+                        <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}"> <!--16-->
+                        <div class="card-body"> <!--16-->
+                            <h5 class="card-title">{{ post.title }}</h5> <!--16-->
+                            <hr/> <!--16-->
+                            <h6 class="card-subtitle">Author: {{ post.author.username }}</h6> <!--16-->
+                            <p class="card-text">Category: {{ post.category.name }}</p> <!--16-->
+                        </div> <!--16-->
+                    </div> <!--16-->
+                </div> <!--16-->
+                {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %} <!--16-->
+                {% if forloop.last %}</div>{% endif %} <!--16-->
+            {% endfor %}
 
+            {% include "pagination.html" %}
+        {% else %} <!--16-->
+            <div class="alert alert-danger">NOT</div> <!--16-->
+        {% endif %} <!--16-->
+    </div> <!--16-->
 {% endblock %} <!--6-->
