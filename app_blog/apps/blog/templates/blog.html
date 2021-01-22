@@ -23,6 +23,13 @@
                             <h6 class="card-subtitle">Author: {{ post.author.username }}</h6> <!--16-->
                             <p class="card-text">Category: {{ post.category.name }}</p> <!--16-->
                         </div> <!--16-->
+                         <div class="card-footer"> <!--18-->
+                            {% if user == post.author %} <!--18-->
+                                <a href="{% url 'delete_post' post.id %}" class="btn btn-danger"> <!--18-->
+                                    Delete post <!--18-->
+                                </a> <!--18-->
+                            {% endif %}
+                        </div> <!--18-->
                     </div> <!--16-->
                 </div> <!--16-->
                 {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %} <!--16-->

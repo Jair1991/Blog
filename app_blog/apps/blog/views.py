@@ -59,3 +59,20 @@ def create_post(request):
 
     form = PostForms
     return render(request, "create_post.html", {"form": form})
+
+
+# all config # #<!--18-->
+def delete_post(request, post_id):
+    try:
+        post = Post.objects.get(pk=post_id)
+    except Post.DoesNotExist:
+        messages.error(request, "The post to delete does not exist")
+        return redirect("blog")
+
+    if post.author != request.user:
+        messages.error(request, "You are not the author of this post")
+        return redirect("blog")
+
+    post.delete()
+    messages.success(request, F"The post {post.title} has been deleted")
+    return redirect("blog")
