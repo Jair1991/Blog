@@ -17,8 +17,12 @@ from django.contrib import messages
 from apps.blog.models import Post
 # #<!--17-->
 from django.core.paginator import Paginator
+# #<!--19 protecting urls with decorations-->
+from django.contrib.auth.decorators import login_required
 
 
+# #<!--19 protecting urls with decorations-->
+@login_required(login_url='/accounts/accessing')
 # #<!--5-->
 def index(request):
     # #<!--5-->
@@ -41,6 +45,8 @@ def index(request):
     return render(request, "blog.html", {"posts": posts, "pages": pages, "current_page": current_page})
 
 
+# #<!--19 protecting urls with decorations-->
+@login_required(login_url='/accounts/accessing')
 # all config # #<!--12-->
 def create_post(request):
 
@@ -61,6 +67,8 @@ def create_post(request):
     return render(request, "create_post.html", {"form": form})
 
 
+# #<!--19 protecting urls with decorations-->
+@login_required(login_url='/accounts/accessing')
 # all config # #<!--18-->
 def delete_post(request, post_id):
     try:
