@@ -1,6 +1,7 @@
 # all config # #<!--10-->
 from django.db import models
 from django.contrib.auth.models import User
+# #<!--19-->
 import os
 
 
@@ -26,9 +27,13 @@ class Post(models.Model):
     high_date = models.DateTimeField(auto_now_add=True, verbose_name='High date')
     update_date = models.DateTimeField(auto_now_add=True, verbose_name='Update date')
 
+    # #<!--19-->
     def delete(self, *args, **kwargs):
+        # #<!--19-->
         if os.path.isfile(self.image.path):
+            # #<!--19-->
             os.remove(self.image.path)
+        # #<!--19 builder-->
         super(Post, self).delete(*args, **kwargs)
 
     def __str__(self):
