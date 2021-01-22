@@ -15,6 +15,8 @@ from apps.blog.forms import PostForms
 from django.contrib import messages
 # #<!--16-->
 from apps.blog.models import Post
+# #<!--17-->
+from django.core.paginator import Paginator
 
 
 # #<!--5-->
@@ -23,10 +25,20 @@ def index(request):
     # return HttpResponse("Hi world")
     # #<!--6-->
     # return render(request, "blog.html")
-    # #<!--16-->
-    posts = Post.objects.all()
-    # #<!--16-->
-    return render(request, "blog.html", {"posts": posts})
+    # #<!--16 posts = Post.objects.all()--> # #<!--17-->
+    list_posts = Post.objects.all()
+    # #<!--17-->
+    paginator = Paginator(list_posts, 3)
+    # #<!--17-->
+    page = request.GET.get("page") or 1
+    # #<!--17-->
+    posts = paginator.get_page(page)
+    # #<!--17-->
+    current_page = int(page)
+    # #<!--17-->
+    pages = range(1, posts.paginator.num_pages + 1)
+    # #<!--16 return render(request, "blog.html", {"posts": posts})-->  # #<!--17-->
+    return render(request, "blog.html", {"posts": posts, "pages": pages, "current_page": current_page})
 
 
 # all config # #<!--12-->
